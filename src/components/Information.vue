@@ -1,29 +1,31 @@
 <template>
   <div class="row">
     <div class="col-md-4">
-      <img :src="info.Poster" v-if="info.Poster !== 'N/A'" alt="Poster" />
-      <img src="static/no-poster.jpg" v-if="info.Poster === 'N/A'" alt="Poster" />
+      <img :src="info.Poster" alt="Poster" class="poster" />
     </div>
     <div class="col-md-8">
-      <h1><a target="_blank" :href="`http://www.imdb.com/title/${$route.params.id}`">{{ info.Title }} </a><small>({{info.Year}})</small></h1>
+      <h1>
+        <a target="_blank" :href="info.Homepage">{{ info.Title }} </a>
+        <small v-if="info.Year">({{info.Year}})</small>
+      </h1>
       <p>
-        <span class="label label-success"><i class="fa fa-star"/> {{ info.imdbRating }}</span>
+        <span class="label label-success"><i class="fa fa-star"/> {{ info.Rate }}</span>
         <span class="label label-info">{{ info.Runtime }}</span>
-        <span class="label label-default">{{ info.Rated }}</span>
+        <span class="label label-default">{{ info.Rate }}</span>
+        <span>
+          <a target="_blank" :href="`http://www.imdb.com/title/${info.imdbID}`">
+            <img src="static/imdb.png" height="26" width="30"/>
+          </a>
+      </span>
       </p>
+
       <p>
-        {{ info.Genre }}
+        {{ info.Genres }}
       </p>
       <p class="plot">{{ info.Plot }}</p>
-      <p>
-        <span class="director">Director: </span><span>{{ info.Director }}</span>
-      </p>
-      <p>
-        <span class="writer">Writer: </span><span>{{ info.Writer }}</span>
-      </p>
-      <p>
-        <span class="actors">Stars: </span><span>{{ info.Actors }}</span>
-      </p>
+      <section class="videos">
+        <iframe class="video" v-for="video in info.Videos" width="320" height="180" :src="`https://www.youtube.com/embed/${video.key}`" frameborder="0" allowfullscreen></iframe>
+      </section>
     </div>
   </div>
 </template>
@@ -39,8 +41,7 @@
       };
     },
     async beforeCreate() {
-      const resp = await info(this.$route.params.id);
-      this.info = resp.data;
+      this.info = await info(this.$route.params.id);
     },
   };
 </script>
@@ -50,9 +51,13 @@
     font-size: 1.2em;
     font-family: Verdana, Helvetica, sans-serif;
   }
-  .actors, .director, .writer {
-    font-weight: 900;
-    font-family: Verdana, Helvetica, sans-serif;
-    color: #999;
+  .poster {
+    max-width: 100%;
+  }
+  .videos {
+    .video {
+      display: inline;
+      margin: 0 3px;
+    }
   }
 </style>

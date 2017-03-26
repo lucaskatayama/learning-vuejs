@@ -22,14 +22,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <ul>
-        <li v-for="result in results"
-            class="search-item"
-            @click="open(result.imdbID)"
-        >
-          <SearchItem :key="result.imdbID" :data="result" />
-        </li>
-      </ul>
+      <span v-for="result in results"
+          class="search-item"
+          @click="open(result.id)"
+      >
+        <SearchItem :key="result.id" :data="result" />
+      </span>
       <div class="col-md-12" v-if="results.length === 0">
         No Results
       </div>
@@ -65,10 +63,7 @@
       },
       async search() {
         const start = new Date();
-        // reset data before search
-        this.results = [];
-        const result = await search(this.$route.query.q);
-        this.results = result.data.Search || [];
+        this.results = await search(this.$route.query.q);
         const end = new Date();
         this.time = moment.duration(end - start).as('seconds');
       },
@@ -86,7 +81,9 @@
     padding: 0;
   }
   .search-item {
+    cursor: pointer;
     padding: 8px 0;
+    display: inline-flex;
     &:hover {
       background-color: #ccc;
     }

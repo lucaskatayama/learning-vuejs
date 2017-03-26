@@ -5,7 +5,7 @@
         <div class="navbar-header">
           <router-link to="/" class="navbar-brand">
             <img class="logo" src="static/logo.png"/>
-            OMDB
+            Moogle
           </router-link>
         </div>
         <div class="navbar-collapse collapse">

@@ -2,7 +2,7 @@
   <div class="text-center">
     <div class="row">
       <h1>
-        <i class="fa fa-ticket"></i>Search OMDB
+        <i class="fa fa-ticket"></i>Search for Movies
       </h1>
     </div>
     <div class="row">
@@ -14,7 +14,10 @@
       </div>
     </div>
     <div class="row space-top">
-      <button class="btn btn-default" @click="search">Search</button>
+      <button class="btn btn-default" @click="search">
+        <i class="fa fa-search"></i>
+        Search
+      </button>
     </div>
 
   </div>

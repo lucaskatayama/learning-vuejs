@@ -1,16 +1,19 @@
 <template>
-  <span class="row">
+  <div class="item">
     <!--Poster-->
-    <div class="col-md-1 col-sm-2 no-padding">
-      <img :src="Poster" v-if="Poster !== 'N/A'" alt="Poster" class="poster" />
-      <img src="static/no-poster.jpg" v-if="Poster === 'N/A'" alt="Poster" class="poster" />
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <img :src="Poster" v-if="Poster !== 'N/A'" alt="Poster" class="poster" />
+      </div>
     </div>
     <!--Info-->
-    <div class="col-md-11 col-sm-10 text-left">
-      <div class="title">{{ Title }}</div>
-      <div class="year">{{ Year }}</div>
+    <div class="row">
+      <div class="text-enter">
+        <div class="title text-center">{{ Title }}</div>
+        <div class="year text-center">{{ Year }}</div>
+      </div>
     </div>
-  </span>
+  </div>
 </template>
 
 
@@ -26,18 +29,19 @@
 </script>
 
 <style lang="scss" scoped>
+  .item{
+    width: 16em;
+  }
   .poster {
-    max-height: 8em;
-    max-width: 6em;
-    display: block;
-
+    max-height: 16em;
+    max-width: 12em;
+    display: inline;
   }
   .title {
-    text-align: left;
     font-size: 1.2em;
   }
   .row {
-    margin: 2em 0;
+    margin: 1em 0;
   }
   .no-padding {
     padding: 0;

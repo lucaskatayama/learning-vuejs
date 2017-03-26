@@ -17,7 +17,9 @@
           </li>
           <li>Axios</li>
           <li>MomentJS</li>
-          <li>OMDB API</li>
+          <li>
+            <a href="https://developers.themoviedb.org">TMDB API</a>
+          </li>
         </ul>
       </section>
     </div>
