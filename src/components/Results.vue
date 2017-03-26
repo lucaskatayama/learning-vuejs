@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6 col-sm-8">
       <input class="form-control"
               placeholder="Search"
-              v-model="query"
+              v-model="searchTerm"
               @keyup.enter="changeSearch" />
 
     </div>
-    <div class="col-md-2">
+    <div class="col-md-2 col-sm-2">
       <button class="btn btn-default" @click="changeSearch">
         <i class="fa fa-search"></i>
       </button>
@@ -16,7 +16,7 @@
 
   </div>
   <div class="row">
-    <div class="col-md-12" v-if="results.length !== 0">
+    <div class="col-md-12" v-if="results.length">
       {{ `${results.length} results (${time}s)` }}
     </div>
   </div>
@@ -52,10 +52,11 @@
     data() {
       return {
         results: [],
-        query: this.$route.query.q,
+        searchTerm: '',
       };
     },
     async created() {
+      this.searchTerm = this.$route.query.q;
       await this.search();
     },
     methods: {
@@ -64,13 +65,15 @@
       },
       async search() {
         const start = new Date();
+        // reset data before search
+        this.results = [];
         const result = await search(this.$route.query.q);
+        this.results = result.data.Search || [];
         const end = new Date();
-        this.results = result.data.Search;
         this.time = moment.duration(end - start).as('seconds');
       },
       changeSearch() {
-        router.push({ name: 'results', query: { q: this.query } }, () => {
+        router.push({ name: 'results', query: { q: this.searchTerm } }, () => {
           this.search();
         });
       },

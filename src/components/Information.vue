@@ -1,7 +1,8 @@
 <template>
   <div class="row">
     <div class="col-md-4">
-      <img :src="info.Poster" alt="Poster" />
+      <img :src="info.Poster" v-if="info.Poster !== 'N/A'" alt="Poster" />
+      <img src="static/no-poster.jpg" v-if="info.Poster === 'N/A'" alt="Poster" />
     </div>
     <div class="col-md-8">
       <h1><a target="_blank" :href="`http://www.imdb.com/title/${$route.params.id}`">{{ info.Title }} </a><small>({{info.Year}})</small></h1>

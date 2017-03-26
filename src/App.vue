@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-header">
           <router-link to="/" class="navbar-brand">
-            <img class="logo" src="https://vuejs.org/images/logo.png"/>
+            <img class="logo" src="static/logo.png"/>
             OMDB
           </router-link>
         </div>

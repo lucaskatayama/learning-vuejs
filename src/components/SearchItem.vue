@@ -1,12 +1,12 @@
 <template>
   <span class="row">
     <!--Poster-->
-    <div class="col-md-1 no-padding">
+    <div class="col-md-1 col-sm-2 no-padding">
       <img :src="Poster" v-if="Poster !== 'N/A'" alt="Poster" class="poster" />
-      <img :src="NoPoster" v-if="Poster === 'N/A'" alt="Poster" class="poster" />
+      <img src="static/no-poster.jpg" v-if="Poster === 'N/A'" alt="Poster" class="poster" />
     </div>
     <!--Info-->
-    <div class="col-md-9 text-left">
+    <div class="col-md-11 col-sm-10 text-left">
       <div class="title">{{ Title }}</div>
       <div class="year">{{ Year }}</div>
     </div>
@@ -15,13 +15,10 @@
 
 
 <script>
-  import NoPoster from '@/assets/imgs/no-poster.jpg';
-
   export default {
     props: ['data'],
     data() {
       return {
-        NoPoster,
         ...this.data,
       };
     },
@@ -30,7 +27,10 @@
 
 <style lang="scss" scoped>
   .poster {
-    height: 8em;
+    max-height: 8em;
+    max-width: 6em;
+    display: block;
+
   }
   .title {
     text-align: left;
