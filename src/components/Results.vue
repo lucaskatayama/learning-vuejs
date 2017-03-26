@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="row">
-    <div class="col-md-6 col-sm-8">
+    <div class="col-md-6 col-sm-10 col-xs-10">
       <input class="form-control"
               placeholder="Search"
               v-model="searchTerm"
               @keyup.enter="changeSearch" />
 
     </div>
-    <div class="col-md-2 col-sm-2">
+    <div class="col-md-2 col-sm-2 col-xs-2">
       <button class="btn btn-default" @click="changeSearch">
         <i class="fa fa-search"></i>
       </button>
@@ -21,9 +21,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
       <span v-for="result in results"
-          class="search-item"
+          class="search-item col-xs-12 col-lg-2 col-md-3"
           @click="open(result.id)"
       >
         <SearchItem :key="result.id" :data="result" />

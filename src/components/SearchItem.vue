@@ -29,9 +29,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .item{
-    width: 16em;
-  }
   .poster {
     max-height: 16em;
     max-width: 12em;
