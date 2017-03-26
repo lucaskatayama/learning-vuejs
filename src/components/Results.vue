@@ -83,7 +83,6 @@
   .search-item {
     cursor: pointer;
     padding: 8px 0;
-    display: inline-flex;
     &:hover {
       background-color: #ccc;
     }
