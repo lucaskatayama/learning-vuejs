@@ -7,8 +7,14 @@
       </section>
       <section>
         <ul>
-          <li>VueJS</li>
-          <li>VueJS Router</li>
+          <li>
+            <a href="https://vuejs.org/">VueJS</a>
+          </li>
+          <li>
+            <a href="https://router.vuejs.org/en/">
+              VueJS Router
+            </a>
+          </li>
           <li>Axios</li>
           <li>MomentJS</li>
           <li>OMDB API</li>

@@ -39,8 +39,8 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import moment from 'moment';
+  import { search } from '@/services/search';
   import { router } from '@/router';
   import SearchItem from '@/components/SearchItem';
 
@@ -64,15 +64,13 @@
       },
       async search() {
         const start = new Date();
-        const result =
-          await axios.get(`http://www.omdbapi.com/?s=${this.$route.query.q}`);
+        const result = await search(this.$route.query.q);
         const end = new Date();
         this.results = result.data.Search;
         this.time = moment.duration(end - start).as('seconds');
       },
       changeSearch() {
         router.push({ name: 'results', query: { q: this.query } }, () => {
-          console.log(this.$route.query.q);
           this.search();
         });
       },

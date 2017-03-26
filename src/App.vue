@@ -3,11 +3,10 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-
-          <a class="navbar-brand" href="https://vuejs.org/" target="_blank">
+          <router-link to="/" class="navbar-brand">
             <img class="logo" src="https://vuejs.org/images/logo.png"/>
-            VueJS
-          </a>
+            OMDB
+          </router-link>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -20,18 +19,22 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <router-link :to="{name: 'about'}" tag="li" active-class="active" exact>
-              <a>About</a>
+              <a>
+                <i class="fa fa-info-circle"></i>
+              </a>
             </router-link>
             <router-link :to="{name: 'contact'}" tag="li" active-class="active" exact>
-              <a>Contact</a>
+              <a>
+                <i class="fa fa-envelope"></i>
+              </a>
             </router-link>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container">
+    <main class="container">
       <router-view></router-view>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -43,13 +46,16 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  padding-top: 60px;
+  margin-top: 50px;
   .navbar-brand {
     .logo {
       float: left;
       height: 36px;
       margin-top: -8px;
     }
+  }
+  main.container {
+    padding-top: 10px;
   }
 }
 

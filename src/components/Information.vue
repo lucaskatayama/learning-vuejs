@@ -29,7 +29,7 @@
 
 
 <script>
-  import axios from 'axios';
+  import { info } from '@/services/search';
 
   export default {
     data() {
@@ -38,7 +38,7 @@
       };
     },
     async beforeCreate() {
-      const resp = await axios.get(`http://www.omdbapi.com/?plot=full&i=${this.$route.params.id}`);
+      const resp = await info(this.$route.params.id);
       this.info = resp.data;
     },
   };
